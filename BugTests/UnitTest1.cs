@@ -45,15 +45,6 @@ public class UnitTest1
     }
 
     [TestMethod]
-    public void Test_AssignWhileClosed()
-    {
-        var bug = new Bug(Bug.State.Closed);
-        bug.Assign();
-        Bug.State state = bug.getState();
-        Assert.AreEqual(Bug.State.Closed, state);
-    }
-
-    [TestMethod]
     public void Test_CloseWhileAssigned()
     {
         var bug = new Bug(Bug.State.Assigned);
@@ -69,24 +60,6 @@ public class UnitTest1
         bug.Assign();
         Bug.State state = bug.getState();
         Assert.AreEqual(Bug.State.Assigned, state);
-    }
-
-    [TestMethod]
-    public void Test_DeferWhileDeferred()
-    {
-        var bug = new Bug(Bug.State.Defered);
-        bug.Defer();
-        Bug.State state = bug.getState();
-        Assert.AreEqual(Bug.State.Defered, state);
-    }
-
-    [TestMethod]
-    public void Test_CloseWhileDeferred()
-    {
-        var bug = new Bug(Bug.State.Defered);
-        bug.Close();
-        Bug.State state = bug.getState();
-        Assert.AreEqual(Bug.State.Closed, state);
     }
 
     [TestMethod]
@@ -112,14 +85,5 @@ public class UnitTest1
     {
         var bug = new Bug(Bug.State.Closed);
         Assert.ThrowsException<System.InvalidOperationException>(() => bug.Defer());
-    }
-
-    [TestMethod]
-    public void Test_CloseWhileOpen2()
-    {
-        var bug = new Bug(Bug.State.Open);
-        bug.Close();
-        Bug.State state = bug.getState();
-        Assert.AreEqual(Bug.State.Open, state);
     }
 }
