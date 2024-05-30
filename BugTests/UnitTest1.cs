@@ -25,9 +25,7 @@ public class UnitTest1
     public void Test_CloseWhileOpen()
     {
         var bug = new Bug(Bug.State.Open);
-        bug.Close();
-        Bug.State state = bug.getState();
-        Assert.AreEqual(Bug.State.Open, state);
+        Assert.ThrowsException<System.InvalidOperationException>(() => bug.Close());
     }
 
     [TestMethod]
@@ -43,9 +41,7 @@ public class UnitTest1
     public void Test_DeferWhileClosed()
     {
         var bug = new Bug(Bug.State.Closed);
-        bug.Defer();
-        Bug.State state = bug.getState();
-        Assert.AreEqual(Bug.State.Closed, state);
+        Assert.ThrowsException<System.InvalidOperationException>(() => bug.Defer());
     }
 
     [TestMethod]
@@ -115,9 +111,7 @@ public class UnitTest1
     public void Test_DeferWhileClosed2()
     {
         var bug = new Bug(Bug.State.Closed);
-        bug.Defer();
-        Bug.State state = bug.getState();
-        Assert.AreEqual(Bug.State.Closed, state);
+        Assert.ThrowsException<System.InvalidOperationException>(() => bug.Defer());
     }
 
     [TestMethod]
