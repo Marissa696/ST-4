@@ -1,7 +1,7 @@
 namespace BugTests;
 
 [TestClass]
-public class UnitTest1
+public class UnitTest
 {
     [TestMethod]
     public void Test_Assign_To_Assigned()
